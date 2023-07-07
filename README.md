@@ -2,4 +2,4 @@
 
 ### Nome aluno(a)
 
-[Aléxia Dias Batista
+Aléxia Dias Batista

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+</head>
+<style>
+    body{
+    background: rgb(176, 240, 245) ;
+    font: normal 15pt Timenews;
+}
+
+header{
+    color: rgb(6, 6, 6);
+    text-align: center;
+}
+
+section{
+    background-color: rgb(217, 237, 234) ;
+    border-radius: 10px;
+    padding: 15px;
+    width: 500px;
+    margin:auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.326);
+}
+select{
+    width: 150px;
+}
+
+footer{
+    color:rgb(1, 48, 65);
+    text-align: center;
+    font-style: italic;
+}
+</style>
+<body>
+    <header>
+        <h1>Analisador de Números</h1>
+    </header>
+
+    <section>
+        <div>
+            Numero (entre 1 e 100):
+            <input type="namber" name="fnum" id="fnum">
+            <input type ="button" value="Adicionar" onclick="Adicionar">
+            <br><br> <select name="flista" id="flista" size="6"></select>
+            <br> <input type="button" value="Finalizar" onclick="Finalizar">
+
+        </div>
+        <div id="res">
+
+        </div>
+    </section>
+<footer>
+    <p>&copy; AléxiaDias</p>
+</footer>
+<script>
+    let num = document.querySelector('input#fnum')
+    let lista = document.querySelector('select#flista')
+    let res = document.querySelector('div#res')
+    let valores = []
+
+    function isNumero(n){
+        if(Number(n)>=1 && Number(n) <= 100){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    function inLista(n,1){
+        if(l.indexOf(Number(n))!= -1){
+            return true
+        }else{
+            return false
+        }
+    }
+
+function adicionar() {
+    if(isNumero(num.value) && !inLista(num.value, valores)){
+        valores.push(Number(num.value))
+        let item = document.createElement('option')
+        item.text = `Valor ${num.value} adicionando`
+        lista.appendChild(item)
+        res.innerHTML = ''
+    }else{
+        window.alert('Valor inválido ou ja encontrado ')
+    }num.value= ''
+    num.focus
+}
+function finalizar(){
+    if(valores.length == 0){
+        window.alert('Adicionar valores antes de cinalizar!')
+    }else{
+        var tot =valores.length
+        var maior = valores [0]
+        var menor = valores [0]
+        var soma= 0
+        var media = 0
+
+        for(let pos in valores){
+            soma += valores[pos]
+            if(valores [pos]> maior)
+            maior = valores[pos]
+            if(valores[pos]< menor){
+                menor=valores[pos]
+            }
+        }
+        media = soma /tot
+        res.innerHTML = ''
+        res.innerHTML += `<p> Ao todo, temos ${tot} números adicionados.</p>`
+        res.innerHTML += `<p>Maior valor informado foi: ${maior}</p>`
+        res.innerHTML += `<p>Menor valor informado foi: ${menor}</p>`
+        res.innerHTML += `<p>Somando todos os valores informado o resultado foi: ${soma}</p>`
+        res.innerHTML += `<p>A média de todos os valores informado foi: ${media}</p>`
+    }
+}
+
+</script>
+</body>
+</html>
